@@ -1,0 +1,222 @@
+
+body {
+    background-image: url(img_n2.jpg);
+    background-size: cover; /* Ajusta a imagem para cobrir todo o fundo */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-position: center center; /* Centraliza a imagem */
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    overflow: hidden;
+}
+
+footer{
+
+    background-color: #222a3d;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);    
+    color: white;
+    padding: 10px;
+    text-align: center;
+    height: 30px;
+    z-index: 2;
+    transition: background-color 0.9s;
+}
+
+.header a {
+    color: white;
+}
+
+#kanban-board {
+    margin-top: 60px; /* Ajuste a margem superior conforme necessário */
+    display: flex;
+    justify-content: space-between;
+}
+
+.kanban-column {
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 1%;
+    box-sizing: border-box;
+    width: 30%;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    margin: auto;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(40px);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: aliceblue;
+    padding: 10px;
+    height: 88vh; /* altura total da coluna */
+    overflow-y: auto; /* Exibe a barra de rolagem, mesmo que não haja conteúdo para rolar */
+    transition: border-bottom 1s ease; /* Adiciona uma transição suave para o efeito hover */
+    transition: transform 1s ease; 
+}
+
+.kanban-column:hover {
+   
+    font-weight: bold;    
+    border: 2px solid #2c6b85;
+    transform: translateY(-10px);
+    
+}
+
+.kanban-item {
+    transition: border-bottom 1s ease; /* Adiciona uma transição suave para o efeito hover */
+    transition: transform 1s ease; 
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo com transparência */
+    margin-bottom: 2px; /* Espaçamento entre os itens */
+    padding: 8px;
+    width: 100%; /* Faz os itens ocuparem 100% da largura da coluna */
+    box-sizing: border-box; /* Mantém padding e bordas dentro da largura total */
+    word-break: break-all; /* Quebra de palavra para longos itens */
+}
+
+.kanban-item:hover {
+   
+    font-weight: bold;    
+    border: 2px solid #ff7d00;
+    transform: translateY(-1px);
+    
+}
+
+
+.text {
+    border-radius: 1%;
+    color: #CCCCCC;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    z-index: 1;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all 0.3s ease;
+    width: calc(100% - 30px); /* Ajusta a largura do h3 para 100% da largura da coluna com uma margem de 15px em cada lado */
+}
+
+#restart-button1 {
+    position: absolute;
+    top: 0px;
+    left: 10px;      
+    padding: 0px;       
+    margin-left: 5px;
+    margin-top: 7px;
+    color: white; /* Cor do ícone */
+    font-size: 20px; /* Tamanho do ícone */
+    background-color: transparent; /* Fundo transparente */
+    border: none; /* Remove a borda */
+    cursor: pointer; /* Adiciona cursor de ponteiro ao passar o mouse */
+}
+
+
+.kanban-column::-webkit-scrollbar {
+    width: 2px; /* Largura da barra de rolagem */
+}
+
+.kanban-column::-webkit-scrollbar-thumb {
+    background-color: rgba(14, 2, 128, 0.5); /* Cor do "polegar" (a parte arrastável) */
+    border-radius: 1px; /* Borda arredondada */
+}
+
+.kanban-column::-webkit-scrollbar-track {
+    background-color: transparent; /* Cor da trilha (a parte não arrastável) */
+}
+
+
+.kanban-column {
+    scrollbar-width: thin;
+    scrollbar-color: #222a3d transparent; /* Cor do "polegar" e da trilha, respectivamente */
+}
+
+.text-footer{
+    border: solid 1px transparent    ;
+    border-radius: 1%;
+    text-align: center;
+    font-size: 10px;
+    margin-bottom: 5px;
+    margin-top: 5PX;
+    text-decoration: none;
+    color: #e5ded9;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: transparent; 
+
+
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 900px) {
+    .kanban-item {
+        font-size: 13px; 
+    } }    
+
+
+@media (max-width: 750px) {
+    .kanban-item {
+        font-size: 9px; 
+    }
+}
+
+@media (max-width: 680px) {
+    .kanban-item {
+        font-size: 8px; 
+    }
+}
+
+@media (max-width: 560px) {
+    .kanban-item {
+        font-size: 6px; 
+    }
+}
+
+@media (max-width: 375px) {
+    .kanban-item {
+        font-size: 3px; 
+    }
+}
+
+
+@media (max-width: 900px) {
+    h3 {
+            font-size: 16px; 
+        }
+}
+
+
+@media (max-width: 720px) {
+    h3 {
+            font-size: 11px; 
+        }
+}
+@media (max-width: 560px) {
+    h3 {
+            font-size: 8px; 
+        }
+}
+
+
+
+
+
+
+@media (max-width: 375px) {
+    h3 {
+            font-size: 5px; 
+        }
+    }
+
+    @import '@sweetalert2/theme-dark/dark.scss';

@@ -1,0 +1,113 @@
+body {
+    background-image: url(img_inicio.jpg); /* Substitua pelo caminho real da sua imagem */
+    background-size: cover;
+    /*background-repeat: no-repeat; /* Evita a repetição da imagem */
+   
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Para ocupar pelo menos 100% da altura da viewport */
+    margin: 0;
+}
+
+.container {
+ 
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;   
+    border-radius: 1%;
+    box-sizing: border-box;       
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    margin: auto;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(40px);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: aliceblue;
+    padding: 200px;
+    height: 88vh;
+    transition: border-bottom 1s ease; /* Adiciona uma transição suave para o efeito hover */
+    transition: transform 1s ease;     
+    margin-top: 35px;
+   
+}
+
+.container:hover {
+   
+    font-weight: bold;    
+    border: 2px solid #0c2543;
+    transform: translateY(-10px);
+    
+}
+
+.text-center{
+    border: solid 1px transparent    ;
+    border-radius: 1%;
+    text-align: center;
+    font-size: 10px;
+    margin-bottom: 0px;
+    text-decoration: none;
+    color: #e5ded9;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: border-bottom 0.9s ease; /* Adiciona uma transição suave para o efeito hover */
+    transition: transform 0.9s ease; 
+   
+    
+
+
+}
+
+.text-center:hover {
+   
+    font-weight: bold;    
+    border-bottom: 2px solid #ff7d00;
+    transform: translateY(-20px);
+    
+}
+
+.text-center i {
+    font-size: 24px; /* Ajuste o tamanho do ícone conforme necessário */
+    margin-bottom: 10px; /* Espaçamento entre o ícone e o texto */
+}
+p{
+    font-size: 13px;
+}
+
+
+
+a {
+    vertical-align: top;
+    min-height: 5rem;
+    vertical-align: top;
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #e5ded9;
+    font-weight: bold;
+}
+
+
+
+.text-footer{
+    border: solid 1px transparent    ;
+    border-radius: 1%;
+    text-align: center;
+    font-size: 10px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #e5ded9;
+    padding-left: 8px;
+    padding-right: 8px;
+    
+   
+    
+
+
+}

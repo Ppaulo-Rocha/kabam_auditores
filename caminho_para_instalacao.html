@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+        
+    </style>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Logo-MOV.png" type="image/png">
+
+        <title>Auditoria de instalação</title>    
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="stylesheet" href="instalacao.css">
+        <link rel="stylesheet" href="https://unpkg.com/dragula/dist/dragula.min.css">   
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css">
+        <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <header class="header">       
+       
+        <div id="reload-button-container" onclick="reloadPage()">
+
+            <button id="restart-button1" class="fas fa-retweet" style="font-size: 30px; background-color: transparent; border: none; color: white;"></button>
+        
+        </div>
+
+            <a id="return-button" href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#ffff" class="bi bi-houses" viewBox="0 0 16 16">
+                <path d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708L5.793 1Zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708L8.793 2Zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207l-4.5-4.5Z"/>
+                </svg>
+            </a>
+
+            <div id="log-container"></div>
+          
+    </header>
+
+        <div id="kanban-board">
+
+            <div class="kanban-column" id="todo">
+
+                <h3 class="text">ANALISE OS ITENS</h3>
+           
+                <div class="kanban-item" draggable="true">DBM PADRÃO</div>
+                <div class="kanban-item" draggable="true">ACESSO REMOTO</div>
+                <div class="kanban-item" draggable="true">FIBRA IDENTIFICADA</div>
+                <div class="kanban-item" draggable="true">SENHA PADRÃO</div>
+                <div class="kanban-item" draggable="true">IPV6</div>
+                <div class="kanban-item" draggable="true">FOTO DO KM INICIO</div>
+                <div class="kanban-item" draggable="true">FOTO DO KM CHEGADA</div>
+                <div class="kanban-item" draggable="true">FOTO DA CTO ABERTA</div>
+                <div class="kanban-item" draggable="true">FOTO DA CTO FECHADA</div>
+                <div class="kanban-item" draggable="true">DROP INÍCIO</div>
+                <div class="kanban-item" draggable="true">DROP FIM</div>
+                <div class="kanban-item" draggable="true">FOTO DBM EXTERNO</div>
+                <div class="kanban-item" draggable="true">FOTO DBM INTERNO</div>
+                <div class="kanban-item" draggable="true">ETIQUETA NO DROP</div>
+                <div class="kanban-item" draggable="true">TAMPA DA CAIXA NOME DOS CLIENTES</div>
+                <div class="kanban-item" draggable="true">MAC DA ONU</div>
+                <div class="kanban-item" draggable="true">MAC DO ROTEADOR</div>
+                <div class="kanban-item" draggable="true">INSTALAÇÃO PERTO</div>
+                <div class="kanban-item" draggable="true">INSTALAÇÃO LONGE</div>
+                <div class="kanban-item" draggable="true">TESTE DE VELOCIDADE</div>
+                <div class="kanban-item" draggable="true">PRODUTOS</div>
+                <div class="kanban-item" draggable="true">COMODATO</div>      
+          
+            </div>
+
+            <div class="kanban-column" id="in-progress">
+
+                <h3 class="text">REPROVADOS</h3>
+           
+            </div>
+
+            <div class="kanban-column" id="done">
+
+                <h3 class="text">APROVADOS</h3>
+            
+            </div>
+        </div>
+
+   
+
+    <!-- Script para a biblioteca dragula e código JavaScript -->
+        <script src="https://unpkg.com/dragula/dist/dragula.min.js"></script>
+        <script src="script_instalacao.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js"></script>
+        <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    
+    
+    
+    <footer class="text-footer">
+        
+        <img src="salvador icone.png" alt="Logo da Empresa" width="28">
+
+        
+        <p>Desenvolvido por Salvador Tec</p>
+    
+    </footer>
+    
+</body>
+
+</html>
