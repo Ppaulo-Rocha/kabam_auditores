@@ -15,7 +15,7 @@ var drake = dragula(kanbanColumns, {
 // Atualize esta função no seu script_instalacao.js
 function checkAuditStatus(target) {
   var doneItems = Array.from(doneColumn.getElementsByClassName('kanban-item'));
-  var isAuditComplete = doneItems.length === 22;
+  var isAuditComplete = doneItems.length === 23;
 
   if (isAuditComplete) {
       doneItems.forEach(function (item) {
