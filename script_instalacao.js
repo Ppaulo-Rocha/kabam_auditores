@@ -96,7 +96,7 @@ function gerarLogDownload(doneItems) {
 
 function checkAuditStatus(target) {
   var doneItems = Array.from(doneColumn.getElementsByClassName('kanban-item'));
-  var isAuditComplete = doneItems.length === 22;
+  var isAuditComplete = doneItems.length === 23;
 
   if (isAuditComplete) {
       // Exibir a caixa de diálogo SweetAlert2 com mensagem de aprovação
