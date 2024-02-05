@@ -20,7 +20,7 @@ function addToLog(message) {
 
 function checkAuditStatus() {
     var doneItems = Array.from(doneColumn.getElementsByClassName('kanban-item'));
-    var isAuditComplete = doneItems.length === 29;
+    var isAuditComplete = doneItems.length === 7;
 
     if (isAuditComplete) {
         // Adicionar a classe 'completed' aos itens concluídos
