@@ -1,4 +1,4 @@
-
+var logContainer = document.getElementById('log-container');
 var kanbanBoard = document.getElementById('kanban-board');
 var todoColumn = document.getElementById('todo');
 var inProgressColumn = document.getElementById('in-progress');
@@ -11,6 +11,28 @@ var drake = dragula(kanbanColumns, {
 });
 
 
+
+// Atualize esta função no seu script_instalacao.js
+function checkAuditStatus(target) {
+  var doneItems = Array.from(doneColumn.getElementsByClassName('kanban-item'));
+  var isAuditComplete = doneItems.length === 22;
+
+  if (isAuditComplete) {
+      doneItems.forEach(function (item) {
+          var coluna = getItemColumn(item);
+          var status = getStatusFromColumn(coluna);
+          var logMessage = `Item dropped: ${item.textContent} from ${coluna} to ${target.id}: ${status}`;
+          console.log(logMessage); 
+                  
+          logContainer.innerHTML += `<p>${logMessage}</p>`;
+      });
+
+      // Restante do código...
+  }
+}
+
+
+
 function addToLog(message) {
     var logTerminal = document.getElementById('log-terminal');
     var logMessage = document.createElement('div');
@@ -18,46 +40,102 @@ function addToLog(message) {
     logTerminal.appendChild(logMessage);
 }
 
-function checkAuditStatus() {
-    var doneItems = Array.from(doneColumn.getElementsByClassName('kanban-item'));
-    var isAuditComplete = doneItems.length === 22;
-
-    if (isAuditComplete) {
-        // Adicionar a classe 'completed' aos itens concluídos
-        doneItems.forEach(function (item) {
-            item.classList.add('completed');
-        });
-
-        // Remover a classe 'dragula-no-drag' para permitir arrastar novamente
-        drake.containers.forEach(function (container) {
-            container.classList.remove('dragula-no-drag');
-        });
-
-        // Aguardar 3 segundos antes de alertar a aprovação
-        setTimeout(function () {
-            // Exibir caixa de diálogo SweetAlert2 com mensagem de aprovação
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                },
-                buttonsStyling: false,
-                theme: 'dark', // Adiciona o tema dark
-            });
-
-            swalWithBootstrapButtons.fire({
-                title: 'Auditoria Aprovada!',
-                text: 'Seguindo para a próxima etapa...',
-                icon: 'success',
-                timer: 1500,
-                showConfirmButton: false
-            }).then(() => {
-                // Após fechar o alerta, recarregar a página
-                location.reload();
-            });             
-           
-        }, 3000);
-    }
+function getStatusFromColumn(column) {
+  switch (column) {
+      case 'done':
+          return 'Aprovado';
+      case 'in-progress':
+          return 'Reprovado';
+      case 'todo':
+          return 'Não Auditado';
+      default:
+          return 'Desconhecido';
+  }
 }
+
+// Função para gerar o log e oferecer para download
+function gerarLogDownload(doneItems) {
+  // Função para obter a coluna na qual o item está
+  function getItemColumn(item) {
+    for (var i = 0; i < kanbanColumns.length; i++) {
+        if (kanbanColumns[i].contains(item)) {
+            return kanbanColumns[i].id;
+        }
+    }
+    return null;
+  }
+
+  var log = "Status dos Itens:\n";
+
+  doneItems.forEach(function (item) {
+      var coluna = getItemColumn(item);
+      var status = getStatusFromColumn(coluna);
+      log += `${item.textContent}: ${status}\n`;
+  });
+
+  // Criar um Blob (Binary Large Object) com o conteúdo do log
+  var blob = new Blob([log], { type: 'text/plain' });
+
+  // Criar um link para download
+  var link = document.createElement('a');
+  link.href = window.URL.createObjectURL(blob);
+  link.download = 'log_auditoria.txt';
+
+  // Adicionar o link ao corpo do documento
+  document.body.appendChild(link);
+
+  // Simular um clique no link para iniciar o download
+  link.click();
+
+  // Remover o link do corpo do documento
+  document.body.removeChild(link);
+}
+
+
+
+
+function checkAuditStatus(target) {
+  var doneItems = Array.from(doneColumn.getElementsByClassName('kanban-item'));
+  var isAuditComplete = doneItems.length === 22;
+
+  if (isAuditComplete) {
+      // Exibir a caixa de diálogo SweetAlert2 com mensagem de aprovação
+      const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+              confirmButton: 'btn btn-success',
+          },
+          buttonsStyling: false,
+          theme: 'dark',
+      });
+
+      swalWithBootstrapButtons.fire({
+          title: 'Auditoria Aprovada!',
+          text: 'Seguindo para a próxima etapa...',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false
+      }).then(() => {
+          // Após fechar o alerta, gerar o log e oferecer para download
+          gerarLogDownload(doneItems);
+          
+          // Remover a classe 'completed' dos itens (opcional)
+          doneItems.forEach(function (item) {
+              item.classList.remove('completed');
+          });
+
+          // Adicionar a classe 'dragula-no-drag' novamente para impedir arrastar
+          drake.containers.forEach(function (container) {
+              container.classList.add('dragula-no-drag');
+          });
+
+          // Recarregar a página após algum tempo (opcional)
+          setTimeout(function () {
+              location.reload();
+          }, 3000);
+      });
+  }
+}
+
 
 
 
@@ -132,7 +210,7 @@ function openRejectionFormPopup(itemText) {
   });
 
   swalWithBootstrapButtons.fire({
-    title: 'Item Reprovado 🫠😥📝',
+    title: 'Ahh não, um iitem foi reprovado!🫠',
     text: `Deseja abrir o formulário de reprovação para o item "${itemText}"?`,
     icon: 'warning',
     showCancelButton: true,
